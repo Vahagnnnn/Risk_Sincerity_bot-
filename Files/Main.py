@@ -435,11 +435,11 @@ def insert_names(message):
 
 # --------/Delete Name/--------------------------------------------------------------------
 
-while True:
-    try:
-        bot.polling(none_stop=True, interval=0, timeout=20)
-    except Exception as e:
-        print(f"Connection error: {e}")
-        time.sleep(15)
+# while True:
+#     try:
+#         bot.polling(none_stop=True, interval=0, timeout=20)
+#     except Exception as e:
+#         print(f"Connection error: {e}")
+#         time.sleep(15)
 
-# bot.polling(none_stop=True)
+bot.polling(none_stop=True)
