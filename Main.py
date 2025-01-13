@@ -1,3 +1,4 @@
+from datetime import datetime
 import telebot
 from telebot import types
 import random
@@ -406,9 +407,10 @@ def insert_names(message):
     else:
         names_str = ", ".join(names)
         numbered_names = [f"{i + 1}) {name}" for i, name in enumerate(names)]
+        registration_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         cursor.execute('''
-            INSERT INTO Names (ChatID, Names)
-            VALUES (?, ?)
+            INSERT INTO Names (ChatID, Names,registration_date)
+            VALUES (?, ?,registration_date)
         ''', (chat_id, names_str))
 
         conn.commit()
