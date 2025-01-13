@@ -1,7 +1,7 @@
 import sqlite3
 
 def tables():
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Risk(

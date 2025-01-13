@@ -1,5 +1,3 @@
-import time
-
 import telebot
 from telebot import types
 import random
@@ -169,7 +167,7 @@ def callback_message(callback):
 
 
 def Get_Risk(message):
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM Risk")
     lastID = cursor.fetchone()[0]
@@ -195,7 +193,7 @@ def Get_Risk(message):
 
 def Set_Risk(message):
     RiskText = message.text.strip()
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
 
     cursor.execute(f'INSERT INTO Risk(Tasks) VALUES("{RiskText}")')
@@ -219,7 +217,7 @@ def Set_Risk(message):
 
 
 def View_All_Risk(message):
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
 
     cursor.execute('SELECT * FROM Risk')
@@ -247,7 +245,7 @@ def Delete_Risk_Input_ID(message):
 
 def Delete_Risk(message):
     Erasable_Risk_Id = message.text.strip()
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
 
     cursor.execute(f'DELETE FROM Risk WHERE ID == {Erasable_Risk_Id}')
@@ -268,7 +266,7 @@ def Delete_Risk(message):
 
 
 def Get_Sincerity(message):
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
     cursor.execute("SELECT COUNT(*) FROM Sincerity")
     lastID = cursor.fetchone()[0]
@@ -297,7 +295,7 @@ def Get_Sincerity(message):
 
 def Set_Sincerity(message):
     SincerityText = message.text.strip()
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
 
     cursor.execute(f'INSERT INTO Sincerity(Questions) VALUES("{SincerityText}")')
@@ -321,7 +319,7 @@ def Set_Sincerity(message):
 
 
 def View_All_Sincerity(message):
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
 
     cursor.execute('SELECT * FROM Sincerity')
@@ -349,7 +347,7 @@ def Delete_Sincerity_Input_ID(message):
 
 def Delete_Sincerity(message):
     Erasable_Sincerity_Id = message.text.strip()
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
 
     cursor.execute(f'DELETE FROM Sincerity WHERE ID == {Erasable_Sincerity_Id}')
@@ -378,7 +376,7 @@ def add_name(message):
     bot.register_next_step_handler(message,insert_names)
 
 def insert_names(message):
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
 
     chat_id = message.chat.id

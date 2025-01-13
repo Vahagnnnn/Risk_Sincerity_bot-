@@ -10,7 +10,7 @@ BOT_TOKEN = '7574557958:AAHTGzsIT9_fYM-Ls54Z18pUg05RF1_e20Y'
 bot = TeleBot(BOT_TOKEN)
 
 # Database path
-db_path = '../Risk_Sincerity.db'
+db_path = 'Risk_Sincerity.db'
 
 def initialize_database():
     """Function to create the database and table if not exists."""

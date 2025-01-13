@@ -17,7 +17,7 @@ def names(message):
 
 
 def View_All_Names(message):
-    conn = sqlite3.connect('../Risk_Sincerity.db')
+    conn = sqlite3.connect('Risk_Sincerity.db')
     cursor = conn.cursor()
     chat_id = message.chat.id
 
