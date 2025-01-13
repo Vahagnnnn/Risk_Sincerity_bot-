@@ -192,6 +192,7 @@ def Get_Risk(message):
         bot.send_message(message.chat.id, "<pre>Ռիսկ</pre>\n" + Risks, parse_mode='HTML')
         Show_Get_Choice.Show_Get_Choice(message)
 
+
 def Set_Risk(message):
     RiskText = message.text.strip()
     conn = sqlite3.connect('Risk_Sincerity.db')
@@ -374,7 +375,8 @@ def Delete_Sincerity(message):
 def add_name(message):
     bot.send_message(message.chat.id, "Ներմուծեք խաղացողների անունները բաժանված ստորակետներով"
                                       "(Այն անունները որոնք կրկնվում են ներմուծեք ազագնուններով)")
-    bot.register_next_step_handler(message,insert_names)
+    bot.register_next_step_handler(message, insert_names)
+
 
 def insert_names(message):
     conn = sqlite3.connect('Risk_Sincerity.db')
@@ -382,8 +384,7 @@ def insert_names(message):
 
     chat_id = message.chat.id
 
-
-# --------EMPTY TABLE--------------------------------------------------------------------
+    # --------EMPTY TABLE--------------------------------------------------------------------
 
     cursor.execute('''
         DELETE FROM Names
@@ -391,33 +392,35 @@ def insert_names(message):
     ''', (chat_id,))
     conn.commit()
 
-# --------/EMPTY TABLE/--------------------------------------------------------------------
+    # --------/EMPTY TABLE/--------------------------------------------------------------------
 
-# --------Names--------------------------------------------------------------------
+    # --------Names--------------------------------------------------------------------
 
     text = message.text.strip().split(',')
     names = [name.strip() for name in text if name.strip()]
 
-    if len(names) <2:
-        if text=='/play':
+    if len(names) < 2:
+        if text == '/play':
             play(message)
         else:
             bot.send_message(message.chat.id, "Խնդրում եմ մուտքագրեք գոնե երկու անուն, բաժանված ստորակետներով")
-            bot.register_next_step_handler(message,insert_names)
+            bot.register_next_step_handler(message, insert_names)
     else:
         names_str = ", ".join(names)
         numbered_names = [f"{i + 1}) {name}" for i, name in enumerate(names)]
         registration_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         cursor.execute('''
             INSERT INTO Names (ChatID, Names,registration_date)
-            VALUES (?, ?,registration_date)
-        ''', (chat_id, names_str))
+            VALUES (?, ?,?)
+        ''', (chat_id, names_str, registration_date))
 
         conn.commit()
         # bot.send_message(message.chat.id, f"Անունները հաջողությամբ ավելացվել են \n{str('\n'.join(numbered_names))}")
         bot.send_message(message.chat.id, f"Անունները հաջողությամբ ավելացվել են \n" + '\n'.join(numbered_names))
         # bot.send_message(message.chat.id, f"Անունները հաջողությամբ ավելացվել են \\n{'\\n'.join(numbered_names)}")
     conn.close()
+
+
 # --------/Names/--------------------------------------------------------------------
 # --------Delete Name--------------------------------------------------------------------
 
