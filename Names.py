@@ -1,6 +1,4 @@
-from pygame.examples.midi import NullKey
 from telebot import types
-import telebot
 import sqlite3
 import telebot
 
