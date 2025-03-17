@@ -9,6 +9,7 @@ import Show_Get_Game_Type
 import Names
 from Tables import tables
 from SetData import start_handler
+import time
 
 TOKEN = os.getenv("TOKEN")
 # bot = telebot.TeleBot('7574557958:AAHTGzsIT9_fYM-Ls54Z18pUg05RF1_e20Y')
@@ -448,4 +449,13 @@ def insert_names(message):
 #         print(f"Connection error: {e}")
 #         time.sleep(15)
 
-bot.polling(none_stop=True)
+while True:
+    try:
+        print("Бот запущен...")
+        bot.polling(none_stop=True)
+    except Exception as e:
+        print(f"Ошибка: {e}")
+        time.sleep(5)  # Ожидание перед перезапуском
+
+
+# bot.polling(none_stop=True)
