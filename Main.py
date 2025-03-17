@@ -1,3 +1,4 @@
+import os
 from datetime import datetime
 import telebot
 from telebot import types
@@ -9,7 +10,9 @@ import Names
 from Tables import tables
 from SetData import start_handler
 
-bot = telebot.TeleBot('7574557958:AAHTGzsIT9_fYM-Ls54Z18pUg05RF1_e20Y')
+TOKEN = os.getenv("TOKEN")
+# bot = telebot.TeleBot('7574557958:AAHTGzsIT9_fYM-Ls54Z18pUg05RF1_e20Y')
+bot = telebot.TeleBot(TOKEN)
 
 
 @bot.message_handler(commands=['start'])
