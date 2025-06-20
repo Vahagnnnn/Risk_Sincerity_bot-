@@ -11,7 +11,7 @@ from Tables import tables
 from SetData import start_handler
 import time
 
-TOKEN = os.getenv("TOKEN")
+TOKEN = os.getenv("7574557958:AAHTGzsIT9_fYM-Ls54Z18pUg05RF1_e20Y")
 # bot = telebot.TeleBot('7574557958:AAHTGzsIT9_fYM-Ls54Z18pUg05RF1_e20Y')
 bot = telebot.TeleBot(TOKEN)
 
